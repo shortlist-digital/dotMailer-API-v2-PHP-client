@@ -1,5 +1,5 @@
 {
-    "name": "romanpitak/dotmailer-api-v2-client",
+    "name": "shortlist-digital/dotmailer-api-v2-php-client",
     "type": "library",
     "description": "Client library for the dotMailer v2 (REST) API.",
     "keywords": [
