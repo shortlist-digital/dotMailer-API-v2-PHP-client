@@ -1,5 +1,5 @@
 {
-    "name": "shortlist-digital/dotmailer-api-v2-php-client",
+    "name": "shortlist-digital/dotMailer-API-v2-PHP-client",
     "type": "library",
     "description": "Client library for the dotMailer v2 (REST) API.",
     "keywords": [
