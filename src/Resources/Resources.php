@@ -30,6 +30,8 @@ use DotMailer\Api\DataTypes\ApiContactImport;
 use DotMailer\Api\DataTypes\ApiContactImportReport;
 use DotMailer\Api\DataTypes\ApiContactList;
 use DotMailer\Api\DataTypes\ApiContactResubscription;
+use DotMailer\Api\DataTypes\ApiContactScore;
+use DotMailer\Api\DataTypes\ApiContactScoreList;
 use DotMailer\Api\DataTypes\ApiContactSuppression;
 use DotMailer\Api\DataTypes\ApiContactSuppressionList;
 use DotMailer\Api\DataTypes\ApiDataField;
@@ -526,6 +528,36 @@ final class Resources implements IResources
         $withFullData = $withFullData ? 'true' : 'false';
         $url = sprintf("contacts?withFullData=%s&select=%s&skip=%s", $withFullData, $select, $skip);
         return new ApiContactList($this->execute($url));
+    }
+
+    public function GetScoringForContacts($select = 1000, $skip = 0)
+    {
+        $url = sprintf("contacts/score/?select=%s&skip=%s", $select, $skip);
+        return new ApiContactScoreList($this->execute($url));
+    }
+
+    public function GetScoringForContactsInAddressBook($addressBookId, $select = 1000, $skip = 0)
+    {
+        $url = sprintf("address-books/%s/contacts/score/?select=%s&skip=%s", $addressBookId, $select, $skip);
+        return new ApiContactScoreList($this->execute($url));
+    }
+
+    public function GetScoringModifiedSinceDateForContacts($date, $select = 1000, $skip = 0)
+    {
+        $url = sprintf("contacts/score/modified-since/%s?select=%s&skip=%s", $date, $select, $skip);
+        return new ApiContactScoreList($this->execute($url));
+    }
+
+    public function GetScoringForContactByEmail($email)
+    {
+        $url = sprintf("contacts/%s/score", $email);
+        return new ApiContactScore($this->execute($url));
+    }
+
+    public function GetScoringForContactById($id)
+    {
+        $url = sprintf("contacts/%s/score", $id);
+        return new ApiContactScore($this->execute($url));
     }
 
 
