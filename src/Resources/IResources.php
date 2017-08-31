@@ -31,6 +31,8 @@ use DotMailer\Api\DataTypes\ApiContactImport;
 use DotMailer\Api\DataTypes\ApiContactImportReport;
 use DotMailer\Api\DataTypes\ApiContactList;
 use DotMailer\Api\DataTypes\ApiContactResubscription;
+use DotMailer\Api\DataTypes\ApiContactScore;
+use DotMailer\Api\DataTypes\ApiContactScoreList;
 use DotMailer\Api\DataTypes\ApiContactSuppression;
 use DotMailer\Api\DataTypes\ApiContactSuppressionList;
 use DotMailer\Api\DataTypes\ApiDataField;
@@ -765,6 +767,50 @@ interface IResources
      */
     public function GetContacts($withFullData = false, $select = 1000, $skip = 0);
 
+    /**
+     * Gets a list of all contact's scores in the account
+     *
+     * @param int $select
+     * @param int $skip
+     * @return ApiContactScoreList
+     */
+    public function GetScoringForContacts($select = 1000, $skip = 0);
+
+    /**
+     * Gets a list of all contact's scores in an address book
+     *
+     * @param int|XsInt $addressBookId
+     * @param int $select
+     * @param int $skip
+     * @return ApiContactScoreList
+     */
+    public function GetScoringForContactsInAddressBook($addressBookId, $select = 1000, $skip = 0);
+
+    /**
+     * Gets a list of contact's scores modified since a given date
+     *
+     * @param string|XsDateTime $date
+     * @param int $select
+     * @param int $skip
+     * @return ApiContactScoreList
+     */
+    public function GetScoringModifiedSinceDateForContacts($date, $select = 1000, $skip = 0);
+
+    /**
+     * Gets a list of all contact's scores in the account
+     *
+     * @param string|XsString $email
+     * @return ApiContactScore
+     */
+    public function GetScoringForContactByEmail($email);
+
+    /**
+     * Gets a list of all contact's scores in the account
+     *
+     * @param string|XsInt $id
+     * @return ApiContactScore
+     */
+    public function GetScoringForContactById($id);
 
     /*
      * ========== custom-from-addresses ==========
